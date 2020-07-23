@@ -1,0 +1,6 @@
+1. initial NPL model, predicts if tweet is trump or hillary
+2. secondary model, divides trump and hillary tweets, clusters on tweets - wordclouds?
+2. analysis on all data using IDf TDF
+
+3. Sentient analysis with trump and hillary
+
