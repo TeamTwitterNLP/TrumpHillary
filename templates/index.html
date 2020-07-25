@@ -86,47 +86,19 @@
 
                     <h3 style="text-align:center;">Data Exploration</h3>
                     <hr class="hr-subtitle">
-
-
-                    <a href="{{ url_for('source')}}"><img class="img-shadow" src="static/img/source.png" width="45%"
-                            height="auto" ALIGN='left' style="margin-right:20px;"></img></a>
                     <p>
 
-                        You might be saying to me, "hold on just a second, seemingly judgemental individual berating me
-                        about my use of plastics. What does any of this have to do with me? I recycle!"
+                        
+                        <br><br>
 
-                        You're right to push back, but at the same time, regardless of the stout contribution you've
-                        made to our communities and world by recycling and playing your role,
-                        there's still much of the world who may not know of this baffling situation humankind has put
-                        itself and Earth in.
+                       
+                        <br><br>
 
-                        No matter how detrimental the situation may seem, we as a collective species continue to
-                        produce, consume, and waste plastics like there's no tomorrow.
+                        
 
                         <br><br>
 
-                        The plastic problem has been growing exponentially for decades.
-
-                        Back in the 1960s, we produced less than 25,000,000 tons of plastic each year.
-
-                        Within the next 20 years, production reached 50,000,000 tons of plastic each year.
-
-                        By the 1990s, we allowed the production of plastic to double again, reaching 100,000,000 tons.
-                        Let's just stop here for just a moment, and think about what this number means.
-
-                        <br><br>
-
-                        The majestic Empire State building has a weight of 350,000 tons. With the amount of plastic made
-                        in 1990, we could have built the Empire State building 285 times!
-
-                        <br><br>
-
-                        Zip forward another 20 years to 2010, where 300,000,000 tons of plastic is made each year.
-
-                        Nearly half of this plastic is made for single-use items, like straws, water bottles, and
-                        Twinkie wrappers.
-
-                        Essentially the items you and I could think of that we could identify as trash.
+                        
 
                     <p class="lead"><br>
 
@@ -149,15 +121,21 @@
                 <div class="col-md-12 col-12">
                     <h3 style="text-align:center;">Are you Trump or Hillary?</h3>
                     <hr class="hr-subtitle">
-                    <a href="{{ url_for('gal')}}"><img class="img-shadow"
-                            src="static/img/Great-Pacific-Garbage-Patch.png" width="45%" height="auto" ALIGN='right'
-                            style="margin-left:20px;"></img></a>
                     <p class="lead">
                         If you've read up to here, I think it's safe to say that you're willing to let me continue this
                         enlightening showcase (rant) of our collective plastic nightmare.
 
-                        <br><br>
-
+                        <br><br>    
+                        <form action="{{ url_for('predict')}}"method="post">
+                            
+                            <input type="text" name="input text" placeholder="input text" required="required" />
+                            <button type="submit" class="btn btn-primary btn-block btn-large">Submit text to see if you're Trump or Hillary</button>
+                        </form>
+                    ​
+                       <br>
+                       <br>
+                       {{ prediction_text }}
+                    
                         I've thought of a 1,000 ways to best describe how plastics enter our oceans, and surprisingly
                         it's harder to do this than explaining to my niece where babies come from.
 
