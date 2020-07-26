@@ -7,7 +7,7 @@
     </title>
     <!-- CSS only -->
     <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -47,186 +47,92 @@
         </div>
     </nav>
     <div class="jumbotron jumbotron-fluid m-xs-3 p-xs-1 m-sm-5 p-sm-5">
-        <img src='../img/trump-vs-clinton.jpg' class='img'>
+        <img src="{{ url_for('static', filename='trump-vs-clinton.jpg') }}" class='img'>
 
         <h1 style="text-align:center;" class="display-3">Trump vs. Hillary </h1>
         <h2 style="text-align:center;">A War Of Words </h2>
-        <br><br>
+        
+        <hr>
         <blockquote class="blockquote text-center">
-            Humanity has a problem. Pollution. We're addicted to it.
+            <b>The 2016 US Election was a pivitol moment for the direction for America and the rest of the world. Social media, espcially  
+            Twitter, played a greater part of expressing both Donald Trump and Hillary Clinton's views. This natural language processing model has 
+        taken over 5,500 of the candidates tweets to make a text predictor to show you which person you represent with your words.</b> <br><br>
+        <h3>Are you Trump or Hillary? Try it yourself below</h3>
+        </blockquote>
 
-            One of the largest contributors to this addiction is our love of plastics and the convenience it presents to
-            us in our daily lives.
+            <script>
+                document.addEventListener("DOMContentLoaded", function(event) { 
+                    var scrollpos = localStorage.getItem('scrollpos');
+                    if (scrollpos) window.scrollTo(0, scrollpos);
+                });
+        
+                window.onbeforeunload = function(e) {
+                    localStorage.setItem('scrollpos', window.scrollY);
+                };
+            </script>
 
-            Plastics are used in construction and medical equipment. One might say this would be the 'good' which
-            plastics can bring.
+<!-- New container-->
+<blockquote class="blockquote text-center">
+    
+<div class="container">
+    <div class="row justify-content-center">
+    
+    <div class="row" >
+        
+      <div class="col-med-6">
 
-            Plastics are also used to neatly package items we consume each and every day.
+        
+         
 
-            We even use plastics to carry around these neatly packaged items.
+            <form action="{{ url_for('predict')}}" method="post">
 
-            Plastics provide much of humanity a sense of entitlement, as it becomes more ingrained in our lives.
-            Plastics have made us lazy.
+                <textarea class="form-control" id="exampleTextarea"  name="input text" placeholder="input text here" required="required" rows="3"></textarea>
+                 <!--<input type="text" textarea class="form-control" name="input text" placeholder="input text" required="required" rows="3"></textarea> -->
+                <button type="submit" class="btn btn-primary btn-block btn-lg">Submit text to see if you're Trump or
+                    Hillary</button>
+            </form>
+        
+            ​
+            <br>
+            <br>
+            
+                {% if value %}
+                
+
+                <div class="card text-white bg-secondary mb-3" style="max-width: 1000px;">
+                    
+                
+                    <div class="card-header"><h3>Your text: "{{ text }}" </h3></div>
+                    <div class="card-body">
+                      <h4 class="card-title">MY PREDICTION IS: {{ value }}</h4>
+                      <p class="card-text"></p>
+                      <p><img src= {{ img1 }} class= "img"></p>
+                    </div> 
+                </div>
+
+</div>
+</div>
+
+</blockquote>
+                
+                
+                
+
+                
+                {% endif %}
+            
+
+           
 
             <br><br>
 
-            What happens when we become lazy? What happens to the plastic after we finish that sandwich? That bottle of
-            water? That straw we use?
-
-            It ends up in our creeks, streams, rivers, and oceans.
+           
 
         </blockquote>
 
         <hr class="my-2">
 
-        <div class="container px-5 pt-4">
-            <div class="row" style="font-size:18px">
-
-                <div class="col-md-12 col-12">
-
-                    <h3 style="text-align:center;">Data Exploration</h3>
-                    <hr class="hr-subtitle">
-                    <p>
-
-                        
-                        <br><br>
-
-                       
-                        <br><br>
-
-                        
-
-                        <br><br>
-
-                        
-
-                    <p class="lead"><br>
-
-                        Feel free to click on any of the images you see on this page to direct you to the formal studies
-                        and research conducted. Very informative.
-                        <br><br>
-                        You can also jump to different pages we've created from the navigation bar. Not as informative
-                        as the formal studies, but there's a lot of pretty visualizaions and colours.
-                        <br><br>
-                        Or just do whatever you want. I'm not your boss.
-
-                    <p class="lead">
-
-                </div>
-            </div>
-
-            <br><br>
-
-            <div class="row" style="font-size:18px">
-                <div class="col-md-12 col-12">
-                    <h3 style="text-align:center;">Are you Trump or Hillary?</h3>
-                    <hr class="hr-subtitle">
-                    <p class="lead">
-                        If you've read up to here, I think it's safe to say that you're willing to let me continue this
-                        enlightening showcase (rant) of our collective plastic nightmare.
-
-                        <br><br>    
-                        <form action="{{ url_for('predict')}}"method="post">
-                            
-                            <input type="text" name="input text" placeholder="input text" required="required" />
-                            <button type="submit" class="btn btn-primary btn-block btn-large">Submit text to see if you're Trump or Hillary</button>
-                        </form>
-                    ​
-                       <br>
-                       <br>
-                       {{ prediction_text }}
-                    
-                        I've thought of a 1,000 ways to best describe how plastics enter our oceans, and surprisingly
-                        it's harder to do this than explaining to my niece where babies come from.
-
-                        So instead, I'm going to bow out and let Hannah Ritchie and Max Roser (authors of the <u><a
-                                href="https://ourworldindata.org/plastic-pollution">article</a></u> which the excerpt
-                        below has been extracted from) do it for me.
-
-                        Don't worry, I'll provide proper citation down below.
-
-                        <br><br>
-
-                        Plastic enters the oceans from coastlines, rivers, tides, and marine sources. But once it is
-                        there, where does it go?
-
-                        The distribution and accumulation of ocean plastics is strongly influenced by oceanic surface
-                        currents and wind patterns. Plastics are typically buoyant – meaning they float on the ocean
-                        surface - allowing them to be transported by the prevalent wind and surface current routes.
-
-                        As a result, plastics tend to accumulate in oceanic gyres, with high concentrations of plastics
-                        at the centre of ocean basins, and much less around the perimeters.
-
-                        After entry to oceans from coastal regions, plastics tend to migrate towards the centre of ocean
-                        basins.
-
-                    </p>
-                </div>
-            </div>
-            <p>
-            <h2 style="text-align:center;">The light at the end of the tunnel</h2>
-            <hr class="hr-subtitle">
-            <div class="row">
-                <div class="col-md-12 col-12">
-
-                    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-                    <div style="font-size: 18px;text-align: left;">
-                        <p>
-                            I've made the situation so far, sound as if it were purely doom and gloom. Don't get me
-                            wrong, it's a very real problem.
-                            <br>
-                            But what I've failed to mention thus far, is the credit that is due to the organizations,
-                            teams, and individuals out there who are actually doing something to help solve our
-                            problems.
-                            <br><br>
-                            In our journey to retrieve data, we came across two of many organizations who are doing some
-                            fantastic work.
-
-                        <ul class="lead">
-                            <li> <u><a href="https://theoceancleanup.com/"></u>The Ocean Cleanup</a> - a non-profit
-                                organization, is developing advanced technologies to rid the world’s oceans of plastic.
-                            </li>
-                            <li> <u><a href="https://www.coastalcleanupdata.org/"></u>TIDE</a> - a public data system
-                                containing the world's largest ocean trash dataset, all collected by volunteers.</li>
-                        </ul>
-                        </p>
-                    </div>
-
-                    <div class="slideshow-container">
-
-                        <div class="mySlides fade">
-                            <div class="numbertext">1 / 3</div>
-                            <img class="img-shadow" src="static/img/Cleanup1.jpg" style="width:50%">
-
-                        </div>
-
-                        <div class="mySlides fade">
-                            <div class="numbertext">2 / 3</div>
-                            <img class="img-shadow" src="static/img/Cleanup2.jpg" style="width:50%">
-
-                        </div>
-
-                        <div class="mySlides fade">
-                            <div class="numbertext">3 / 3</div>
-                            <img class="img-shadow" src="static/img/Cleanup4.jpg" style="width:50%">
-
-                        </div>
-
-                    </div>
-                    <br>
-
-                    <div style="text-align:center">
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
+        
     <script src="http://d3js.org/d3.v5.min.js"></script>
     <script src="d3.min.js?v=3.2.8"></script>
     <script type="text/javascript" charset="utf-8"></script>
