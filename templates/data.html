@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trump vs. Hillary Twitter NLP: Data
+    </title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand" href="{{ url_for('index')}}">Trump vs. Hillary</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+            aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor03">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('index')}}">Home <span class=""></span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('data')}}">Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class="jumbotron jumbotron-fluid m-xs-3 p-xs-1 m-sm-5 p-sm-5">
+     
+        <blockquote class="blockquote text-center">
+            <h3>Exploratory Data Analysis</h3>
+            <hr>
+            Data was taken from <a href= https://www.kaggle.com/benhamner/clinton-trump-tweets>Kaggle</a>, where roughly 6,000 tweets from each person
+            was taken from most of 2016. Data was extensively cleaned up of retweets, and non-English tweets, punction marks, and blank lines. 
+            <br><br>
+            A total of 3,090 and 2,556 Trump and Hillary tweets were left for the model to train and test
+            <br><br>
+
+            <img src="{{ url_for('static', filename='CountPlot.png') }}" class='img'>
+            <i style='font-size:16px'>No, there are not the 2016 election results.</i>
+
+            <br>
+            <br>
+
+    
+    
+         
+        
+        </blockquote>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function(event) { 
+                    var scrollpos = localStorage.getItem('scrollpos');
+                    if (scrollpos) window.scrollTo(0, scrollpos);
+                });
+        
+                window.onbeforeunload = function(e) {
+                    localStorage.setItem('scrollpos', window.scrollY);
+                };
+            </script>
+
+<!-- New container-->
+<blockquote class="blockquote text-center">
+    
+<div class="container">
+    <div class="row justify-content-center">
+    
+    <div class="row" >
+        
+      <div class="col-med-6">
+
+        
+         
+            
+
+           
+
+          
+
+           
+
+        </blockquote>
+
+        <hr class="my-2">
+
+        
+    <script src="http://d3js.org/d3.v5.min.js"></script>
+    <script src="d3.min.js?v=3.2.8"></script>
+    <script type="text/javascript" charset="utf-8"></script>
+    <script src="static/js/imageSlideshow.js"></script>
+
+</body>
+
+</html>

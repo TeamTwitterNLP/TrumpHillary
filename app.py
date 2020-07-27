@@ -10,7 +10,7 @@ img1= None
 text= None
 
 app = Flask(__name__) 
-app.secret_key = "supersecretkey"
+
 app.config['TESTING'] = True
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 scaler = joblib.load("scaler.save")
@@ -25,6 +25,12 @@ def index():
     
     
     return render_template("index.html", value=value, img1=img1, text=text)
+
+@app.route("/data")
+def data():
+    
+    return render_template("data.html")
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -55,10 +61,6 @@ def predict():
         
         return redirect(url_for("index"))
 
-
-@app.before_request
-def make_session_permanent():
-    session.permanent = False
 
 
 
