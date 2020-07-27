@@ -24,7 +24,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <a class="navbar-brand" href="#">Trump vs. Hillary</a>
+        <a class="navbar-brand" href="{{ url_for('index')}}">Trump vs. Hillary</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
             aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,11 +33,11 @@
         <div class="collapse navbar-collapse" id="navbarColor03">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ url_for('index')}}">Home <span class=""></span></a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Data</a>
+                    <a class="nav-link" href="{{ url_for('data')}}">Data</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -51,92 +51,101 @@
 
         <h1 style="text-align:center;" class="display-3">Trump vs. Hillary </h1>
         <h2 style="text-align:center;">A War Of Words </h2>
-        
+
         <hr>
         <blockquote class="blockquote text-center">
-            <b>The 2016 US Election was a pivitol moment for the direction for America and the rest of the world. Social media, espcially  
-            Twitter, played a greater part of expressing both Donald Trump and Hillary Clinton's views. This natural language processing model has 
-        taken over 5,500 of the candidates tweets to make a text predictor to show you which person you represent with your words.</b> <br><br>
-        <h3>Are you Trump or Hillary? Try it yourself below</h3>
+            <b>The 2016 US Election was a pivitol moment for the direction for America and the rest of the world. Social
+                media, espcially
+                Twitter, played a great part of expressing both Donald Trump and Hillary Clinton's views. This natural
+                language processing model has
+                taken over 5,500 of the candidates tweets to make a text predictor to show you which person you
+                represent with your words.</b> <br><br>
+
+            <hr>
+            <h3>Are you Trump or Hillary? Try it yourself below</h3>
         </blockquote>
 
-            <script>
-                document.addEventListener("DOMContentLoaded", function(event) { 
-                    var scrollpos = localStorage.getItem('scrollpos');
-                    if (scrollpos) window.scrollTo(0, scrollpos);
-                });
-        
-                window.onbeforeunload = function(e) {
-                    localStorage.setItem('scrollpos', window.scrollY);
-                };
-            </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function (event) {
+                var scrollpos = localStorage.getItem('scrollpos');
+                if (scrollpos) window.scrollTo(0, scrollpos);
+            });
 
-<!-- New container-->
-<blockquote class="blockquote text-center">
-    
-<div class="container">
-    <div class="row justify-content-center">
-    
-    <div class="row" >
-        
-      <div class="col-med-6">
+            window.onbeforeunload = function (e) {
+                localStorage.setItem('scrollpos', window.scrollY);
+            };
+        </script>
 
-        
-         
+        <!-- New container-->
+        <blockquote class="blockquote text-center">
 
-            <form action="{{ url_for('predict')}}" method="post">
+            <div class="container">
+                <div class="row justify-content-center">
 
-                <textarea class="form-control" id="exampleTextarea"  name="input text" placeholder="input text here" required="required" rows="3"></textarea>
-                 <!--<input type="text" textarea class="form-control" name="input text" placeholder="input text" required="required" rows="3"></textarea> -->
-                <button type="submit" class="btn btn-primary btn-block btn-lg">Submit text to see if you're Trump or
-                    Hillary</button>
-            </form>
-        
-            ​
-            <br>
-            <br>
-            
-                {% if value %}
-                
+                    <div class="row">
 
-                <div class="card text-white bg-secondary mb-3" style="max-width: 1000px;">
-                    
-                
-                    <div class="card-header"><h3>Your text: "{{ text }}" </h3></div>
-                    <div class="card-body">
-                      <h4 class="card-title">MY PREDICTION IS: {{ value }}</h4>
-                      <p class="card-text"></p>
-                      <p><img src= {{ img1 }} class= "img"></p>
-                    </div> 
-                </div>
+                        <div class="col-med-6">
 
-</div>
-</div>
 
-</blockquote>
-                
-                
-                
 
-                
-                {% endif %}
-            
 
-           
+                            <form action="{{ url_for('predict')}}" method="post">
 
-            <br><br>
+                                <textarea class="form-control" id="exampleTextarea" name="input text"
+                                    placeholder="input text here" required="required" rows="3"></textarea>
+                                <!--<input type="text" textarea class="form-control" name="input text" placeholder="input text" required="required" rows="3"></textarea> -->
+                                <button type="submit" class="btn btn-primary btn-block btn-lg">Submit text to see if
+                                    you're Trump or
+                                    Hillary</button>
+                            </form>
 
-           
+                            ​
+                            <br>
+
+
+                            {% if value %}
+
+
+                            <div class="card text-white bg-secondary mb-3" style="max-width: 1000px;">
+
+
+                                <div class="card-header">
+                                    <h3>Your text: <i>"{{ text }}" </i></h3>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">MY PREDICTION IS: <i>{{ value }} </i></h4>
+                                    <p class="card-text"></p>
+                                    <p><img src={{ img1 }} class="img"></p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+        </blockquote>
+
+
+
+
+
+        {% endif %}
+
+
+
+
+        <br><br>
+
+
 
         </blockquote>
 
         <hr class="my-2">
 
-        
-    <script src="http://d3js.org/d3.v5.min.js"></script>
-    <script src="d3.min.js?v=3.2.8"></script>
-    <script type="text/javascript" charset="utf-8"></script>
-    <script src="static/js/imageSlideshow.js"></script>
+
+        <script src="http://d3js.org/d3.v5.min.js"></script>
+        <script src="d3.min.js?v=3.2.8"></script>
+        <script type="text/javascript" charset="utf-8"></script>
+        <script src="static/js/imageSlideshow.js"></script>
 
 </body>
 
