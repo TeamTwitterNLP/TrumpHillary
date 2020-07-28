@@ -22,6 +22,7 @@
 </head>
 
 
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <a class="navbar-brand" href="{{ url_for('index')}}">Trump vs. Hillary</a>
@@ -47,7 +48,7 @@
         </div>
     </nav>
     <div class="jumbotron jumbotron-fluid m-xs-3 p-xs-1 m-sm-5 p-sm-5">
-        <img src="{{ url_for('static', filename='trump-vs-clinton.jpg') }}" class='img'>
+        <img src="{{ url_for('static', filename='trump-vs-clinton.jpg') }}" class='img'><img src="{{ url_for('static', filename='donald1.png') }}" class='img'>
 
         <h1 style="text-align:center;" class="display-3">Trump vs. Hillary </h1>
         <h2 style="text-align:center;">A War Of Words </h2>
@@ -65,6 +66,7 @@
             <h3>Are you Trump or Hillary? Try it yourself below</h3>
         </blockquote>
 
+        <!-- script to prevent page from reloading at top-->
         <script>
             document.addEventListener("DOMContentLoaded", function (event) {
                 var scrollpos = localStorage.getItem('scrollpos');
@@ -113,9 +115,12 @@
                                     <h3>Your text: <i>"{{ text }}" </i></h3>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title">MY PREDICTION IS: <i>{{ value }} </i></h4>
+                                    <h4 class="card-title">MY PREDICTION IS: <i> {{ percent }}  {{ value }} 
+                                        <br>
+                                    </i></h4>
                                     <p class="card-text"></p>
                                     <p><img src={{ img1 }} class="img"></p>
+                                    <br> , 
                                 </div>
                             </div>
 
