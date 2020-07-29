@@ -1,0 +1,16 @@
+Graph 1 - Iphone vs Andrioid 
+
+The number of iPhone tweets vs. hour of the day, normalized over the hours of the day. Ex if there were 10 tweets at 1pm and 20 tweets at 2pm, the line plot should be 0, then 0.33 at 1pm, 0.66 at 2pm, then back to 0.
+
+Graph 2 - Retweets counts vs time 
+
+Thus graph shows number of retweets counts with time from different sources 
+
+Graph 3  - Counts of Different Sources in Trump's and Hillary Tweets vs Retweets 
+
+This graphs shows representation between differenet sources where number people re-tweeted Donald Trump or Hillary Re-tweets 
+
+Graph 4 - Number of tweets by Hillary and Donald Trump 
+
+This graph shows the difference between number of tweets between Hillary and Donald trump. We can see Donald trump is the winner when it comes to tweet :-)
+
