@@ -47,68 +47,232 @@
         </div>
     </nav>
     <div class="jumbotron jumbotron-fluid m-xs-3 p-xs-1 m-sm-5 p-sm-5">
-     
+
         <blockquote class="blockquote text-center">
+
             <h3>Exploratory Data Analysis</h3>
             <hr>
-            A total of approximately 6000 tweets from 2016 were retreived for each candidate from <a href= https://www.kaggle.com/benhamner/clinton-trump-tweets>Kaggle.</a>
-            Retweets, non-English tweets, punctuation marks and blank lines were removed. 
+            <p style=font-size:22px;>It can be argued that re-tweets by each person and their followers played a major impact in the outcome of the election. The following analysis 
+                graphs retweets in a variety of ways, to look into this further. 
+            </p>
+            <br>
+
+            <div class="container-fluid">
+
+                <!-- Row 1 Section 1 -->
+                <div class="row">
+
+
+
+                    <div class="col-md-6 card">
+                        <h4 class="card-header">Apple vs. Android</h4>
+                        <div class="card-body">
+                            <p class="card-text">The number of iPhone re-tweets vs. hour of the day, normalized over the
+                                hours of the day. Ex if there were 10 tweets at 1pm and 20 tweets at 2pm,
+                                the line plot should be 0, then 0.33 at 1pm, 0.66 at 2pm, then back to 0.</p>
+                            <p class="card-text">We can see the most amount of re-tweets happening around noon, with
+                                iPhones having the highest margin.</p>
+
+                        </div>
+                        <img style="height: auto; width: auto; display: block;"
+                            src="{{ url_for('static', filename='Graph1.png') }}" class="img-fluid">
+                        <div class="card-body">
+                        </div>
+                    </div>
+
+                    <!-- Row 1 Section 2 -->
+
+                    <div class="col-md-6 card">
+                        <h4 class="card-header">Retweet Count</h4>
+                        <div class="card-body">
+                            <p class="card-text">This graph shows the difference between number of re-tweets between Hillary and Donald trump.  </p>
+                            <p class="card-text">We can see Trump is the winner when it comes to re-tweets. </p>
+
+                        </div>
+                        <br><br>
+                        <img style="height: auto; width: auto; display: block;"
+                            src="{{ url_for('static', filename='Graph4.png') }}" class="img-fluid">
+                        <div class="card-body">
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+                <br>
+                   
+                    <div class="row">
+
+                         <!-- Row 2 Section 1 -->
+    
+                         <div class="col-md-6 card">
+                            <h4 class="card-header">Source Count</h4>
+                            <div class="card-body">
+                                <p class="card-text">This graphs the different sources of people re-tweeting Trump and
+                                    Hillary tweets. It counts the average re-tweets per Twitter platform. </p>
+                                <p class="card-text">We can see Tweetdeck having the highest usage, followed by Android and
+                                    iPhones. Instagram and non-app tweets were the two lowest. </p>
+    
+                            </div>
+                            <img style="height: auto; width: auto; display: block;"
+                                src="{{ url_for('static', filename='Graph3.png') }}" class="img-fluid">
+                            <div class="card-body">
+                            </div>
+                        </div>
+
+                         <!-- Row 2 Section 2 -->
+
+                        <div class="col-md-6 card">
+                            <h4 class="card-header">Retweets by Month</h4>
+                            <div class="card-body">
+                                <p class="card-text">This shows the retweets by source over time. </p>
+                                <p class="card-text">The volume of retweets is steady, until we start some seeing some higher spikes in May to June.
+                                    We can see a sharp rise in re-tweets late August. There seem to more spikes after that, due to the November
+                                    election date coming up. 
+                                </p>
+                                <br><br>
+                            </div>
+                            <img style="height: auto; width: auto; display: block;"
+                                src="{{ url_for('static', filename='Graph2.png') }}" class="img-fluid">
+                            <div class="card-body">
+                            </div>
+                        </div>
+    
+                       
+
+
+            </div>
+
+            <br>
+
+
+
+            <h3>Natural Langauge Processing Model</h3>
+            <hr>
+            <p style= font-size:22px>A total of approximately 6000 tweets from 2016 were retreived for each candidate from <a
+                href=https://www.kaggle.com/benhamner/clinton-trump-tweets>Kaggle.</a>
+            Retweets, non-English tweets, punctuation marks and blank lines were removed. The only exception were exclaimation marks as Trump used them a lot and so it plays a role
+            in his Tweets, and unique to his style of speaking. Stopwards like 'and', 'a', 'the', 'if' etc. were removed by using the stopwards package from NTLK afterwards.
             <br><br>
-            A total of 3,090 and 2,556 Trump and Hillary tweets were left for the model to train and test
+            This leftover 3,089 and 2,556 Trump and Hillary tweets (total 5,645) for the model to train and test. Even though the model was skewed towards having more Trump tweets, it does not affect it overall.
             <br><br>
 
-            <img src="{{ url_for('static', filename='CountPlot.png') }}" class='img'>
+            <img src="{{ url_for('static', filename='CountPlot.png') }}">
             <i style='font-size:16px'>No, there are not the 2016 election results.</i>
 
             <br>
             <br>
 
-    
-    
-         
+            <p style= font-size:22px> The pipeline consisted of 3 things from sci-kit learn machine learning library:
+                <ul class="list-group" style="font-size: 18px;">
+                    <li class="list-group-item align-items-center">
+                      <b>CountVectorizer()</b>: Words are broken down to smaller units (tokenized). It then counts the words, stores it, and encodes new ones. 
+                      
+                    </li>
+                    <li class="list-group-item align-items-center">
+                        <b>TfidfTransformer()</b>: Scale down the impact of tokens that occur very frequently and therefore
+                        less informative than features that occur in a small fraction of the training set. 
+                      
+                    </li>
+                    <li class="list-group-item  align-items-center">
+                        <b>MultinomialNB()</b>: Naive Bayes classifier
+                      
+                    </li>
+                  </ul>
+                  <br>
+
+                  <div style= font-size:22px></div>
+                  <br><br>
+
+<div class="container-fluid" style='font-size: 18px;'>
+
+    <!-- Row 1 Section 1 -->
+    <div class="row">
+
+
         
+        <div class="col-md-6 card">
+<table class="table table-hover" style='text-align: center;'>
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Trump</th>
+        <th scope="col">Hillary</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr class=>
+        <th scope="row" style= 'border-right:2px solid #dee2e6;'>Trump</th>
+        <td>569</td>
+        <td>49</td>
+        
+      </tr>
+      <tr class=>
+        <th scope="row" style= 'border-right:2px solid #dee2e6;'>Hillary</th>
+        <td>33</td>
+        <td>478</td>
+
+    </tbody>
+</table> 
+</div>
+
+<div class="col-md-6" style="text-align: left; font-size:22px"> 80% of the data was trained on, leaving 20% (1,129) to test and giving a Confusion Matrix to the left.
+33 + 49 = 82 tweets were misclassified from the 1,129 traning set, leaving an accuracy of <b>92.73%</b>. </div>
+</div></div>
+
+
+
+           </p>
+
+
+
+
+
+
+
         </blockquote>
 
-            <script>
-                document.addEventListener("DOMContentLoaded", function(event) { 
-                    var scrollpos = localStorage.getItem('scrollpos');
-                    if (scrollpos) window.scrollTo(0, scrollpos);
-                });
-        
-                window.onbeforeunload = function(e) {
-                    localStorage.setItem('scrollpos', window.scrollY);
-                };
-            </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function (event) {
+                var scrollpos = localStorage.getItem('scrollpos');
+                if (scrollpos) window.scrollTo(0, scrollpos);
+            });
 
-<!-- New container-->
-<blockquote class="blockquote text-center">
-    
-<div class="container">
-    <div class="row justify-content-center">
-    
-    <div class="row" >
-        
-      <div class="col-med-6">
+            window.onbeforeunload = function (e) {
+                localStorage.setItem('scrollpos', window.scrollY);
+            };
+        </script>
 
-        
-         
-            
+        <!-- New container-->
+        <blockquote class="blockquote text-center">
 
-           
+            <div class="container">
+                <div class="row justify-content-center">
 
-          
+                    <div class="row">
 
-           
+                        <div class="col-med-6">
+
+
+
+
+
+
+
+
+
+
 
         </blockquote>
 
         <hr class="my-2">
 
-        
-    <script src="http://d3js.org/d3.v5.min.js"></script>
-    <script src="d3.min.js?v=3.2.8"></script>
-    <script type="text/javascript" charset="utf-8"></script>
-    <script src="static/js/imageSlideshow.js"></script>
+
+        <script src="http://d3js.org/d3.v5.min.js"></script>
+        <script src="d3.min.js?v=3.2.8"></script>
+        <script type="text/javascript" charset="utf-8"></script>
+        <script src="static/js/imageSlideshow.js"></script>
 
 </body>
 
