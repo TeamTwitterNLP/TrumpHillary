@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, request, url_for, session
-from sklearn.externals import joblib
+#from sklearn.externals import joblib
+import joblib
 import numpy as np
 import pandas as pd
 import os
@@ -87,7 +88,7 @@ def predict():
 
 
 
-from nltk.corpus import stopwords
+#from nltk.corpus import stopwords
 
 
 if __name__ == "__main__":
