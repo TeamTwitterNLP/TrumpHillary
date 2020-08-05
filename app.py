@@ -4,6 +4,7 @@ import joblib
 import numpy as np
 import pandas as pd
 import os
+import time
 
 
 value = None
@@ -66,6 +67,7 @@ def predict():
         #global hilpercent
 
         if prediction == 0:
+            time.sleep(5)
             value = "Trump"
             img1 = "https://media3.oakpark.com/Images/2/2/42153/2/1/2_2_42153_2_1_350x700.jpg"
             text= my_input_array2
@@ -73,6 +75,7 @@ def predict():
             #hilpercent= hilper
             percent= trumpper
         elif prediction == 1:
+            time.sleep(5)
             value = "Hillary"
             img1 = "https://i.guim.co.uk/img/media/030b519118d984e4c1fd4d7b4c6fff60e6228852/886_27_1926_1155/master/1926.jpg?width=605&quality=45&auto=format&fit=max&dpr=2&s=21ee8e9f1e2c79102d94263ec16f961c"
             text= my_input_array2
