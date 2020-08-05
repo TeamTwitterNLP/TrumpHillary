@@ -40,6 +40,7 @@ def data():
 @app.route("/predict", methods=["POST"])
 def predict():
     if request.method == 'POST': #this block is only entered when the form is submitted
+        time.sleep(5)
         my_input = request.form.to_dict()
         my_input_array = pd.Series(my_input["input text"])
         my_input_array2= my_input["input text"]
