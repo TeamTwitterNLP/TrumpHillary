@@ -68,7 +68,7 @@ def predict():
         if prediction == 0:
             
             value = "Trump"
-            img1 = "https://media3.oakpark.com/Images/2/2/42153/2/1/2_2_42153_2_1_350x700.jpg"
+            img1 = "https://cdn.britannica.com/21/197021-050-D0AC3E38/portrait-Donald-Trump.jpg"
             text= my_input_array2
             #trumppercent= trumpper
             #hilpercent= hilper
@@ -95,7 +95,6 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
-<<<<<<< HEAD
 
 
 
@@ -105,5 +104,3 @@ if __name__ == "__main__":
 
 
 
-=======
->>>>>>> 8eed5e0314cc65064ac0dbbda2c6a57fdcc9a2c5
